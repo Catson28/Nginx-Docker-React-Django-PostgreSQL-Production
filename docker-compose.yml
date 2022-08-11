@@ -12,6 +12,17 @@ services:
         - POSTGRES_USER=postgres
         - POSTGRES_PASSWORD=postgres
 
+  pgadmin4:
+     image: dpage/pgadmin4
+     restart: always
+     environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+     ports:
+      - "85:80"
+     depends_on:
+     - database
+
   backend:
     build: ./backend
     volumes:
